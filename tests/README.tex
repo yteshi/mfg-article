@@ -4,14 +4,10 @@
 %
 \documentclass[
   pandoc]{mfg-article}
-\title{mfg-article class}
-\author{Yuta Teshima}
-\date{2022/08/15}
-
-\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{iftex}
-\ifPDFTeX
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -87,9 +83,10 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
+
+\title{mfg-article class}
+\author{Yuta Teshima}
+\date{2024/08/13}
 
 \begin{document}
 \maketitle
@@ -98,7 +95,7 @@
 \section{What is this?}\label{what-is-this}}
 
 This package provides a \href{https://www.luatex.org/}{LuaLaTeX} class
-file for Manufacturing Lab document based on
+filefor Manufacturing Lab document based on
 \href{https://github.com/abenori/jlreq}{\texttt{jlreq}} class.
 
 See \href{./README.pdf}{\texttt{README.pdf}} for an example output.
@@ -158,7 +155,11 @@ This package is distributed under the \href{./LICENSE}{MIT License}.
 \begin{itemize}
 \tightlist
 \item
+  2024/08/13 The title has been updated and the kitten now stretches
+  after knocking over a book.
+\item
   2022/08/15 First Commit
 \end{itemize}
 
+% \backmatter
 \end{document}

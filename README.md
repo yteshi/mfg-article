@@ -2,24 +2,24 @@
 title: mfg-article class
 author: 
 - Yuta Teshima
-date: 2022/08/15
+date: 2024/08/13
 ---
 
-# What is this?
-This package provides a [LuaLaTeX](https://www.luatex.org/) class file 
-for Manufacturing Lab document 
-based on [`jlreq`](https://github.com/abenori/jlreq) class.
+## What is this?
+
+This package provides a [LuaLaTeX](https://www.luatex.org/) class file
+for Manufacturing Lab document based on [`jlreq`](https://github.com/abenori/jlreq) class.
 
 See [`README.pdf`](./README.pdf) for an example output.
 
-# Installation
+## Installation
 
 Move the folders as follows
 
--   `./fonts/truetype/public/` --> `$TEXMF/fonts/truetype/public/`
--   `./tex/latex/mfg-article/` --> `$TEXMF/tex/latex/mfg-article/`
+- `./fonts/truetype/public/` --> `$TEXMF/fonts/truetype/public/`
+- `./tex/latex/mfg-article/` --> `$TEXMF/tex/latex/mfg-article/`
 
-# Usage
+## Usage
 
 Set the documentclass to `mfg-article` like the example below.
 
@@ -30,7 +30,7 @@ Setting this option sets the monospace font to [Migu 1M](https://mix-mplus-ipa.o
 \documenclass[migu]{mfg-article}
 ```
 
-# Font Licenses
+## Font Licenses
 
 This package uses `migu-1m-regular` and `migu-1m-bold` as monospaced fonts.
 These fonts are distributed under the
@@ -38,12 +38,13 @@ These fonts are distributed under the
 
 This package uses `GenJyuuGothic` at titles, section titles, and headers.
 This font is distributed under the
-[SIL Open Font License 1.1 ](https://licenses.opensource.jp/OFL-1.1/OFL-1.1.html)
+[SIL Open Font License 1.1](https://licenses.opensource.jp/OFL-1.1/OFL-1.1.html)
 
-# License
+## License
 
 This package is distributed under the [MIT License](./LICENSE).
 
-# Challenge log
+## Challenge log
 
--   2022/08/15 First Commit
+- 2024/08/13 The title has been updated and the kitten now stretches after knocking over a book.
+- 2022/08/15 First Commit

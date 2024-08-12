@@ -59,12 +59,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Headings
 \def\@catpaw{%
-\begin{tikzpicture}[baseline=0pt]
-	% にゃんこのフレーム（デバッグ用）
-	% \draw (0, -0.4\baselineskip) rectangle +(0.6\baselineskip, 0.6\baselineskip); 
-	\node[inner sep=\z@, anchor=south west] (cat) at (0, -0.15\baselineskip)
-	{\includegraphics[height=0.6\baselineskip]{catpaw.pdf}};
-\end{tikzpicture}%
+	\begin{tikzpicture}[baseline=0pt]
+		% にゃんこのフレーム（デバッグ用）
+		% \draw (0, -0.4\baselineskip) rectangle +(0.6\baselineskip, 0.6\baselineskip); 
+		\node[inner sep=\z@, anchor=south west] (cat) at (0, -0.15\baselineskip)
+		{\includegraphics[height=0.6\baselineskip]{catpaw.pdf}};
+	\end{tikzpicture}%
 }
 
 \fancypagestyle{titlepagestyle}
@@ -90,7 +90,7 @@
 	} %ヘッダ中央
 	\fancyfoot[L, R]{}
 	\fancyfoot[C]{%
-	\@catpaw\hskip1ex\thepage\hskip1ex\@catpaw%
+		\@catpaw\hskip1ex\thepage\hskip1ex\@catpaw%
 	} %フッタ中央．ページ番号を表示
 }
 \pagestyle{plain}
@@ -104,43 +104,46 @@
 	% `jlreq.cls' から基本的には変更していない．
 	% pagestyleの箇所のみ変更を加えている．
 	\renewcommand{\maketitle}{%
-    \par
-    \begingroup
-      \renewcommand{\thefootnote}{\fnsymbol{footnote}}%
-      \renewcommand{\@makefnmark}{\hbox{%
-        \jlreq@iftdir{\yoko}{}%
-        \rlap{\@textsuperscript{\normalfont\@thefnmark}}%
-      }}%
-      \renewcommand{\jlreq@referencemark@format}[1]{\@makefnmark}% うーん
-      \if@twocolumn
-        \ifnum\col@number=\@ne
-          \@maketitle
-        \else
-          \twocolumn[\@maketitle]%
-        \fi
-      \else
-        \newpage
-        \global\@topnum\z@
-        \@maketitle
-      \fi
-      % \pagestyle{empty}の時はそのまま．
-      \bool_if:nT {!(
-        \tl_if_empty_p:o \@oddhead &&
-        \tl_if_empty_p:o \@evenhead &&
-        \tl_if_empty_p:o \@oddfoot &&
-        \tl_if_empty_p:o \@evenfoot
-      )} { \thispagestyle{titlepagestyle} }	% modified by yteshima
-      \@thanks
-    \endgroup
-    \jlreq@endofmaketitle
-  }
+		\par
+		\begingroup
+		\renewcommand{\thefootnote}{\fnsymbol{footnote}}%
+		\renewcommand{\@makefnmark}{\hbox{%
+				\jlreq@iftdir{\yoko}{}%
+				\rlap{\@textsuperscript{\normalfont\@thefnmark}}%
+			}}%
+		\renewcommand{\jlreq@referencemark@format}[1]{\@makefnmark}% うーん
+		\if@twocolumn
+			\ifnum\col@number=\@ne
+				\@maketitle
+			\else
+				\twocolumn[\@maketitle]%
+			\fi
+		\else
+			\newpage
+			\global\@topnum\z@
+			\@maketitle
+		\fi
+		% \pagestyle{empty}の時はそのまま．
+		\bool_if:nT {!(
+			\tl_if_empty_p:o \@oddhead &&
+			\tl_if_empty_p:o \@evenhead &&
+			\tl_if_empty_p:o \@oddfoot &&
+			\tl_if_empty_p:o \@evenfoot
+			)} { \thispagestyle{titlepagestyle} }	% modified by yteshima
+		\@thanks
+		\endgroup
+		\jlreq@endofmaketitle
+	}
 	\ExplSyntaxOff
 	\renewcommand{\@maketitle}{%
 		\null%
-		\vskip-\baselineskip % \nullで足されてしまった分を引く
-		% \vskip-\headsep% \headsep + \headheightの高さ分だけ上にシフトさせる
+		\vskip-\baselineskip% \nullで足されてしまった分を引く
+		\vskip-\headsep% \headsep + \headheightの高さ分だけ上にシフトさせる
 		\vskip-\headheight%
-		\noindent\hrulefill\par% 横線
+		% \noindent\hrulefill\par% 横線
+		\noindent\begin{tikzpicture}[overlay]
+			\node[anchor=south] at (0.5\textwidth, -2mm) {\includegraphics{header_top.pdf}};
+		\end{tikzpicture}%
 		\vskip0.5\baselineskip%
 		\begingroup\centering
 		\setmainjfont[
@@ -172,8 +175,12 @@
 		}
 		\par
 		\endgroup
-		\noindent\hrulefill% 横線
-		\vskip\baselineskip
+		% \noindent\hrulefill% 横線
+		\noindent\begin{tikzpicture}[overlay]
+			\node[anchor=south] at (0.5\textwidth, -1mm) {\includegraphics{header_bottom.pdf}};
+		\end{tikzpicture}%
+		\par%
+		%\vskip\baselineskip
 		\ifvoid\jlreq@abstractbox\else\unvbox\jlreq@abstractbox\fi%
 		\global\edef\yteshi@title{\@title\relax}
 	}
